@@ -78,7 +78,7 @@ const Login = (props) => {
           <div className="form-group">
             <label htmlFor="email">email</label>
             <Input
-              type="text"
+              type="email"
               className="form-control"
               name="email"
               value={email}
