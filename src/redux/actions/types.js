@@ -7,6 +7,6 @@ export const LOGOUT = "LOGOUT";
 export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 
-export const FAVOURITE_LOADING = 'LOADING';
+export const FAVOURITE_LOADING = "LOADING";
 export const FAVOURITE_SUCCESS = "FAVOURITE_SUCCESS";
 export const FAVOURITE_FAIL = "FAVOURITE_FAIL";
