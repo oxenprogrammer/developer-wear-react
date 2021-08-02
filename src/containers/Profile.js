@@ -2,19 +2,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { getMyFavourites } from "../redux/actions/wear";
+import { getAllShirts } from "../redux/actions/wear";
 
 const Profile = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
-  const getFavourites = useSelector((state) => state.getData);
+  const getShirts = useSelector((state) => state.getAllShirts);
   const dispatch = useDispatch();
 
-  const fetchMyFavourites = (page = 1) => {
-    dispatch(getMyFavourites(page));
+  const fetchAllShirts = (page = 1) => {
+    dispatch(getAllShirts(page));
   };
 
   React.useEffect(() => {
-    fetchMyFavourites();
+    fetchAllShirts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -22,12 +22,12 @@ const Profile = () => {
     return <Redirect to="/login" />;
   }
 
-  if (getFavourites.loading) {
+  if (getShirts.loading) {
     return <div>loading . . .</div>;
   }
 
-  if (getFavourites.error !== "") {
-    return <p>{getFavourites.error}</p>;
+  if (getShirts.error !== "") {
+    return <p>{getShirts.error}</p>;
   }
 
   return (
@@ -47,9 +47,9 @@ const Profile = () => {
       <p>
         <strong>Email:</strong> {currentUser.email}
       </p>
-      {console.log("getfavourites", getFavourites)}
-      {getFavourites.data.map((element) => {
-        return <div key={element.id}>{element.shirt_name}</div>;
+      {console.log("getShirts", getShirts)}
+      {getShirts.data.map((element) => {
+        return <div key={element.id}>{element.name}</div>;
       })}
     </div>
   );

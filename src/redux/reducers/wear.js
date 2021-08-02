@@ -2,6 +2,9 @@ import {
   FAVOURITE_FAIL,
   FAVOURITE_LOADING,
   FAVOURITE_SUCCESS,
+  SHIRTS_FAIL,
+  SHIRTS_LOADING,
+  SHIRTS_SUCCESS,
 } from "../actions/types";
 
 const initialState = {
@@ -24,6 +27,25 @@ export const getData = (state = initialState, action) => {
         data: action.payload,
       };
     case FAVOURITE_FAIL:
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const getAllShirts = (state = initialState, action) => {
+  switch (action.type) {
+    case SHIRTS_LOADING:
+      return { ...state, loading: true };
+    case SHIRTS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: "",
+        count: action.count,
+        data: action.payload,
+      };
+    case SHIRTS_FAIL:
       return { ...state, loading: false, error: action.payload };
     default:
       return state;
