@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CheckButton from "react-validation/build/button";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import { login } from "../redux/actions/auth";
 
 const required = (value) => {
@@ -25,8 +25,8 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useSelector(state => state.auth);
-  const { message } = useSelector(state => state.message);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.message);
 
   const dispatch = useDispatch();
 

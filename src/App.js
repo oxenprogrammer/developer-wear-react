@@ -3,9 +3,9 @@ import { Link, Route, Router, Switch } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Login from './containers/Login';
-import Profile from './components/Profile';
-import Register from './containers/Register';
+import Login from "./containers/Login";
+import Profile from "./containers/Profile";
+import Register from "./containers/Register";
 import { clearMessage } from "./redux/actions/mesage";
 import { history } from "./helpers/history";
 import { logout } from "./redux/actions/auth";
@@ -13,18 +13,17 @@ import { logout } from "./redux/actions/auth";
 const App = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     history.listen((location) => {
       dispatch(clearMessage()); // clear message when changing location
     });
   }, [dispatch]);
-  
+
   const logOut = () => {
     dispatch(logout());
   };
-  
-  
+
   return (
     <Router history={history}>
       <div>
@@ -73,6 +72,6 @@ const App = () => {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

@@ -7,19 +7,18 @@ const register = (username, email, password, password_confirmation) => {
     username,
     email,
     password,
-    password_confirmation
+    password_confirmation,
   });
 };
 
 const login = async (email, password) => {
-  const response = await axios
-    .post(API_URL + "login", {
-      email,
-      password,
-    });
-  console.log('first response', response);
+  const response = await axios.post(API_URL + "login", {
+    email,
+    password,
+  });
+  console.log("first response", response);
   if (response.data.token) {
-    console.log('response', response);
+    console.log("response", response);
     localStorage.setItem("user", JSON.stringify(response.data));
   }
   return response.data;
