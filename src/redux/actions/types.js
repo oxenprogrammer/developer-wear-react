@@ -19,6 +19,6 @@ export const SHIRT_LOADING = "SHIRT_LOADING";
 export const SHIRT_SUCCESS = "SHIRT_SUCCESS";
 export const SHIRT_FAIL = "SHIRT_FAIL";
 
-export const ADD_LOADING = 'ADD_LOADING';
-export const ADD_SUCCESS = 'ADD_SUCCESS';
-export const ADD_FAIL = 'ADD_FAIL';
+export const ADD_LOADING = "ADD_LOADING";
+export const ADD_SUCCESS = "ADD_SUCCESS";
+export const ADD_FAIL = "ADD_FAIL";

@@ -22,10 +22,9 @@ const Shirt = (props) => {
 
   const shirtData = getShirt.data[shirtId];
 
-
   const handleFavourite = () => {
-    dispatch(addFavourite(shirtData.id))
-  }
+    dispatch(addFavourite(shirtData.id));
+  };
 
   if (!currentUser) {
     return <Redirect to="/login" />;
@@ -43,7 +42,7 @@ const Shirt = (props) => {
     return (
       <div>
         <button onClick={handleFavourite}>Add to favourites</button>
-       {shirtData.name}
+        {shirtData.name}
       </div>
     );
   }
