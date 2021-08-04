@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 
+import { Link } from "react-router-dom";
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { getAllShirts } from "../redux/actions/wear";
 
-const Profile = () => {
+const Shirts = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const getShirts = useSelector((state) => state.getAllShirts);
   const dispatch = useDispatch();
@@ -49,10 +50,15 @@ const Profile = () => {
       </p>
       {console.log("getShirts", getShirts)}
       {getShirts.data.map((element) => {
-        return <div key={element.id}>{element.name}</div>;
+        return (
+          <div key={element.id}>
+            <div>{element.name}</div>
+            <Link to={`/shirts/${element.id}`}>View Detail</Link>
+          </div>
+        );
       })}
     </div>
   );
 };
 
-export default Profile;
+export default Shirts;

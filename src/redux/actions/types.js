@@ -14,3 +14,7 @@ export const FAVOURITE_FAIL = "FAVOURITE_FAIL";
 export const SHIRTS_LOADING = "SHIRTS_LOADING";
 export const SHIRTS_SUCCESS = "SHIRTS_SUCCESS";
 export const SHIRTS_FAIL = "SHIRTS_FAIL";
+
+export const SHIRT_LOADING = "SHIRT_LOADING";
+export const SHIRT_SUCCESS = "SHIRT_SUCCESS";
+export const SHIRT_FAIL = "SHIRT_FAIL";

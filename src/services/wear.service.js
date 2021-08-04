@@ -40,6 +40,12 @@ const addFavourite = async (shirtId) => {
   return response;
 };
 
+const getSingleShirt = async (shirtId) => {
+  return await axios.get(`${API_URL}shirts/${shirtId}`, {
+    headers: authHeader(),
+  });
+};
+
 const addShirt = async (name, description, price, image) => {
   const response = await axios.post(
     API_URL + `shirts/${shirtId}/favourites`,
@@ -63,4 +69,5 @@ export default {
   getAllUsers,
   getAllFavourites,
   getMyFavourites,
+  getSingleShirt,
 };

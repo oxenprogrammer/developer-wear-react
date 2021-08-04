@@ -4,8 +4,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Login from "./containers/Login";
-import Profile from "./containers/Profile";
 import Register from "./containers/Register";
+import Shirt from "./containers/Shirt";
+import Shirts from "./containers/Shirts";
 import { clearMessage } from "./redux/actions/mesage";
 import { history } from "./helpers/history";
 import { logout } from "./redux/actions/auth";
@@ -35,7 +36,12 @@ const App = () => {
           {currentUser ? (
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link to={"/profile"} className="nav-link">
+                <Link to={"/shirts"} className="nav-link">
+                  Shirt Detail
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"#"} className="nav-link">
                   {currentUser.username}
                 </Link>
               </li>
@@ -64,9 +70,10 @@ const App = () => {
 
         <div className="container mt-3">
           <Switch>
+            <Route exact path="/shirts/:id" component={Shirt} />
             <Route exact path={["/", "/login"]} component={Login} />
             <Route exact path="/register" component={Register} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/shirts" component={Shirts} />
           </Switch>
         </div>
       </div>

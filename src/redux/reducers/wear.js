@@ -5,6 +5,9 @@ import {
   SHIRTS_FAIL,
   SHIRTS_LOADING,
   SHIRTS_SUCCESS,
+  SHIRT_FAIL,
+  SHIRT_LOADING,
+  SHIRT_SUCCESS,
 } from "../actions/types";
 
 const initialState = {
@@ -12,6 +15,12 @@ const initialState = {
   data: [],
   error: "",
   count: 0,
+};
+
+const initialStateShirt = {
+  loading: false,
+  data: {},
+  error: "",
 };
 
 export const getData = (state = initialState, action) => {
@@ -46,6 +55,24 @@ export const getAllShirts = (state = initialState, action) => {
         data: action.payload,
       };
     case SHIRTS_FAIL:
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const getSingleShirt = (state = initialStateShirt, action) => {
+  switch (action.type) {
+    case SHIRT_LOADING:
+      return { ...state, loading: true };
+    case SHIRT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: "",
+        data: { ...state.data, [action.shirtId]: action.payload },
+      };
+    case SHIRT_FAIL:
       return { ...state, loading: false, error: action.payload };
     default:
       return state;

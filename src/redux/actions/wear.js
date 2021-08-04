@@ -5,6 +5,9 @@ import {
   SHIRTS_FAIL,
   SHIRTS_LOADING,
   SHIRTS_SUCCESS,
+  SHIRT_FAIL,
+  SHIRT_LOADING,
+  SHIRT_SUCCESS,
 } from "./types";
 
 import WearService from "../../services/wear.service";
@@ -52,6 +55,29 @@ export const getAllShirts = (page) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: SHIRTS_FAIL,
+      payload: error.message,
+    });
+  }
+};
+
+export const getSingleShirt = (shirtId) => async (dispatch) => {
+  try {
+    const response = await WearService.getSingleShirt(shirtId);
+    const result = response.data;
+    console.log("result", result);
+
+    dispatch({
+      type: SHIRT_LOADING,
+    });
+
+    dispatch({
+      type: SHIRT_SUCCESS,
+      payload: result,
+      shirtId,
+    });
+  } catch (error) {
+    dispatch({
+      type: SHIRT_FAIL,
       payload: error.message,
     });
   }

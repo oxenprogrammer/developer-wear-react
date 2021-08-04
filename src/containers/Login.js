@@ -50,7 +50,7 @@ const Login = (props) => {
     if (checkBtn.current.context._errors.length === 0) {
       dispatch(login(email, password))
         .then(() => {
-          props.history.push("/profile");
+          props.history.push("/shirts");
           window.location.reload();
         })
         .catch(() => {
@@ -62,7 +62,7 @@ const Login = (props) => {
   };
 
   if (isLoggedIn) {
-    return <Redirect to="/profile" />;
+    return <Redirect to="/shirts" />;
   }
 
   return (
@@ -70,8 +70,8 @@ const Login = (props) => {
       <div className="card card-container">
         <img
           src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
+          alt="shirts-img"
+          className="shirts-img-card"
         />
 
         <Form onSubmit={handleLogin} ref={form}>
