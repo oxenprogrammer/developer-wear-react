@@ -34,10 +34,9 @@ const getMyFavourites = async (page) => {
 };
 
 const addFavourite = async (shirtId) => {
-  const response = await axios.post(API_URL + `shirts/${shirtId}/favourites`, {
+  return await axios.post(API_URL + `shirts/${shirtId}/favourites`, null, {
     headers: authHeader(),
   });
-  return response;
 };
 
 const getSingleShirt = async (shirtId) => {

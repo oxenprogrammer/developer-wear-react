@@ -78,3 +78,21 @@ export const getSingleShirt = (state = initialStateShirt, action) => {
       return state;
   }
 };
+
+export const addFavourite = (state = {}, action) => {
+  switch (action.type) {
+    case SHIRT_LOADING:
+      return { ...state, loading: true };
+    case SHIRT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: "",
+        data: action.payload,
+      };
+    case SHIRT_FAIL:
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

@@ -1,4 +1,7 @@
 import {
+  ADD_FAIL,
+  ADD_LOADING,
+  ADD_SUCCESS,
   FAVOURITE_FAIL,
   FAVOURITE_LOADING,
   FAVOURITE_SUCCESS,
@@ -78,6 +81,28 @@ export const getSingleShirt = (shirtId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: SHIRT_FAIL,
+      payload: error.message,
+    });
+  }
+};
+
+export const addFavourite = (shirtId) => async (dispatch) => {
+  try {
+    const response = await WearService.addFavourite(shirtId);
+    const result = response.data;
+    console.log("result", result);
+
+    dispatch({
+      type: ADD_LOADING,
+    });
+
+    dispatch({
+      type: ADD_SUCCESS,
+      payload: result,
+    });
+  } catch (error) {
+    dispatch({
+      type: ADD_FAIL,
       payload: error.message,
     });
   }
