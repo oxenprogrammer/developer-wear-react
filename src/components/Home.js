@@ -243,16 +243,6 @@ export const Home = () => {
       </Paper>
       <div className={classes.columnFive}></div>
       <Footer />
-      {/* <footer className={classes.footer}>
-        <Typography className={classes.footerTitle}>Sudo Wear</Typography>
-        <address>Kampala Uganda</address>
-        <div>
-        <i className={classNames(classes.fa, "fa fa-facebook-official")} aria-hidden="true"></i>
-        <i className={classNames(classes.fa, "fa fa-twitter")} aria-hidden="true"></i>
-        <i className={classNames(classes.fa, "fa fa-instagram")} aria-hidden="true"></i>
-        </div>
-        <address>All Rights Reserved</address>
-      </footer> */}
     </Grid>
   );
 };

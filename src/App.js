@@ -34,18 +34,22 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     textDecoration: "none",
     fontWeight: "bold",
-    color: "#ED3170",
+    color: "#FF5617",
     textTransform: "capitalize",
     fontSize: "200%",
-    paddingLeft: "2.4rem",
+    paddingLeft: "0.4rem",
     "@media(max-width: 480px)": {
       width: "120%",
+      fontSize: "140%",
     },
   },
   navLink: {
     display: "inherit",
     alignItems: "center",
     paddingRight: "2.4rem",
+    "@media(max-width: 480px)": {
+      paddingRight: "0",
+    },
   },
   navItem: {
     textDecoration: "none",
@@ -57,6 +61,10 @@ const useStyles = makeStyles(() => ({
     fontWeight: "bold",
     "&:hover": {
       backgroundColor: "#7B7A76",
+    },
+    "@media(max-width: 480px)": {
+      margin: "0 0.4rem",
+      fontSize: "0.7rem",
     },
   },
 }));
@@ -102,7 +110,7 @@ const App = () => {
                 Login
               </Link>
               <Link to={"/register"} className={classes.navItem}>
-                Sign Up
+                SignUp
               </Link>
             </div>
           )}
