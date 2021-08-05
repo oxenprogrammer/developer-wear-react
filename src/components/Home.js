@@ -1,9 +1,14 @@
-import { Button, Grid, Typography } from "@material-ui/core";
+import { Button, Card, Grid, Paper, Typography } from "@material-ui/core";
 
+import { Footer } from "./Footer";
+import back from "../assets/img/back.jpg";
 import backgroundImage from "../assets/img/swag.png";
+import bug from "../assets/img/bug.png";
 import girl from "../assets/img/naava.png";
+import html from "../assets/img/html.png";
 import { makeStyles } from "@material-ui/core";
-import tee from '../assets/img/tee.png';
+import read from "../assets/img/read.png";
+import tee from "../assets/img/tee.png";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -101,14 +106,39 @@ const useStyles = makeStyles(() => ({
     padding: "0.6rem 1.2rem",
     fontWeight: "bold",
     margin: "1.6rem 0",
-    display: 'flex',
+    display: "flex",
     "@media(max-width: 768px)": {
-      margin: '1.6rem auto',
+      margin: "1.6rem auto",
     },
   },
   columnThree: {
-    backgroundColor: '#E7F1FE',
-  }
+    backgroundColor: "#E7F1FE",
+  },
+  columnFour: {
+    display: "grid",
+    gridTemplateColumns: "auto auto auto auto",
+    gap: "1rem",
+    width: "100%",
+    padding: "1rem",
+    justifyContent: "space-evenly",
+    "@media(max-width: 768px)": {
+      gridTemplateColumns: "auto auto",
+    },
+    "@media(max-width: 480px)": {
+      gridTemplateColumns: "auto",
+    },
+  },
+  columnFourCard: {
+    height: "20rem",
+  },
+  scrollImage: {
+    height: "80%",
+  },
+  columnFive: {
+    background: `url(${back})`,
+    height: "10rem",
+    width: "100%",
+  },
 }));
 
 export const Home = () => {
@@ -159,7 +189,7 @@ export const Home = () => {
           </div>
         </article>
       </Grid>
-      <Grid item className={[classes.columnTwo, classes.columnThree]}>
+      <Grid item className={(classes.columnTwo, classes.columnThree)}>
         <article className={classes.backgroundTwo}>
           <div>
             <img
@@ -181,6 +211,48 @@ export const Home = () => {
           </div>
         </article>
       </Grid>
+      <Paper className={classes.columnFour}>
+        <Card className={classes.columnFourCard}>
+          <img
+            className={classes.scrollImage}
+            src={read}
+            alt={"can you read it t-shirt"}
+          />
+        </Card>
+        <Card className={classes.columnFourCard}>
+          <img
+            className={classes.scrollImage}
+            src={bug}
+            alt={"it is not a bug t-shirt"}
+          />
+        </Card>
+        <Card className={classes.columnFourCard}>
+          <img
+            className={classes.scrollImage}
+            src={html}
+            alt={"i know html t-shirt"}
+          />
+        </Card>
+        <Card className={classes.columnFourCard}>
+          <img
+            className={classes.scrollImage}
+            src={tee}
+            alt={"change the world t-shirt"}
+          />
+        </Card>
+      </Paper>
+      <div className={classes.columnFive}></div>
+      <Footer />
+      {/* <footer className={classes.footer}>
+        <Typography className={classes.footerTitle}>Sudo Wear</Typography>
+        <address>Kampala Uganda</address>
+        <div>
+        <i className={classNames(classes.fa, "fa fa-facebook-official")} aria-hidden="true"></i>
+        <i className={classNames(classes.fa, "fa fa-twitter")} aria-hidden="true"></i>
+        <i className={classNames(classes.fa, "fa fa-instagram")} aria-hidden="true"></i>
+        </div>
+        <address>All Rights Reserved</address>
+      </footer> */}
     </Grid>
   );
 };

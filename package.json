@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "big.js": "^6.1.1",
+    "classnames": "^2.3.1",
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
     "flush-promises": "^1.0.2",
