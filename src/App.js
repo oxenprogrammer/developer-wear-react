@@ -94,8 +94,8 @@ const App = () => {
 
           {currentUser ? (
             <div className={classes.navLink}>
-              <Link to={"#"} className={classes.navItem}>
-                {currentUser.username}
+              <Link to={"/shirts"} className={classes.navItem}>
+                Shirts
               </Link>
               <Link to={"/login"} className={classes.navItem} onClick={logOut}>
                 LogOut
