@@ -94,9 +94,6 @@ const App = () => {
 
           {currentUser ? (
             <div className={classes.navLink}>
-              <Link to={"/shirts"} className={classes.navItem}>
-                Shirt Detail
-              </Link>
               <Link to={"#"} className={classes.navItem}>
                 {currentUser.username}
               </Link>
