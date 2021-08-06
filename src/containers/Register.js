@@ -1,195 +1,157 @@
-import React, { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import * as Yup from "yup";
 
-import CheckButton from "react-validation/build/button";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import { isEmail } from "validator";
-import { register } from "../redux/actions/auth";
+import { Grid, Typography } from "@material-ui/core";
 
-const required = (value) => {
-  if (!value) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        This field is required!
-      </div>
-    );
-  }
-};
-
-const validEmail = (value) => {
-  if (!isEmail(value)) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        This is not a valid email.
-      </div>
-    );
-  }
-};
-
-const vusername = (value) => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
-      </div>
-    );
-  }
-};
-
-const vpassword = (value) => {
-  if (value.length < 6 || value.length > 40) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 40 characters.
-      </div>
-    );
-  }
-};
-
-const vpasswordconfirm = (value) => {
-  if (value.length < 6 || value.length > 40) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 40 characters.
-      </div>
-    );
-  }
-};
+import React from "react";
+import classNames from "classnames";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { useStyles } from "./Login";
+import { register as userRegister } from "../redux/actions/auth";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const Register = () => {
-  const form = useRef();
-  const checkBtn = useRef();
+  const validationSchema = Yup.object().shape({
+    username: Yup.string()
+      .required("Username is required")
+      .min(6, "Username must be at least 6 characters")
+      .max(20, "Username must not exceed 20 characters"),
+    email: Yup.string().required("Email is required").email("Email is invalid"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(6, "Password must be at least 6 characters")
+      .max(40, "Password must not exceed 40 characters"),
+    password_confirmation: Yup.string()
+      .required("Confirm Password is required")
+      .oneOf([Yup.ref("password"), null], "Confirm Password does not match"),
+    acceptTerms: Yup.bool().oneOf([true], "Accept Terms is required"),
+  });
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [successful, setSuccessful] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
 
-  const { message } = useSelector((state) => state.message);
   const dispatch = useDispatch();
 
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+  const onSubmit = ({ username, password, password_confirmation, email }) => {
+    dispatch(userRegister(username, email, password, password_confirmation))
+      .then((response) => {
+        console.log("successful", response);
+      })
+      .catch((e) => {
+        console.log("registration failed", e.message);
+      });
   };
 
-  const onChangeEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
-  };
-
-  const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-  };
-
-  const onChangePasswordConfirmation = (e) => {
-    const passwordConfirmation = e.target.value;
-    setPasswordConfirmation(passwordConfirmation);
-  };
-
-  const handleRegister = (e) => {
-    e.preventDefault();
-
-    setSuccessful(false);
-
-    form.current.validateAll();
-
-    if (checkBtn.current.context._errors.length === 0) {
-      dispatch(register(username, email, password))
-        .then(() => {
-          setSuccessful(true);
-        })
-        .catch(() => {
-          setSuccessful(false);
-        });
-    }
-  };
+  const classes = useStyles();
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
+    <Grid container className={classes.root}>
+      <div className={classes.background}></div>
+      <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+        <Typography className={classes.signIn}>Sign in</Typography>
+        <Typography className={classes.tag}>
+          Hello there, sign in and find your favourite developer T-shirt.
+        </Typography>
+        <div className="form-group">
+          <input
+            name="username"
+            type="text"
+            {...register("username")}
+            className={classNames(
+              classes.input,
+              `${errors.username ? "is-invalid" : ""}`
+            )}
+          />
+          <div className={classes.invalidFeedback}>
+            {errors.username?.message}
+          </div>
+        </div>
 
-        <Form onSubmit={handleRegister} ref={form}>
-          {!successful && (
-            <div>
-              <div className="form-group">
-                <label htmlFor="username">Username</label>
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="username"
-                  value={username}
-                  onChange={onChangeUsername}
-                  validations={[required, vusername]}
-                />
-              </div>
+        <div className="form-group">
+          <input
+            name="email"
+            type="text"
+            {...register("email")}
+            className={classNames(
+              classes.input,
+              `${errors.email ? "is-invalid" : ""}`
+            )}
+          />
+          <div className={classes.invalidFeedback}>{errors.email?.message}</div>
+        </div>
 
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="email"
-                  value={email}
-                  onChange={onChangeEmail}
-                  validations={[required, validEmail]}
-                />
-              </div>
+        <div className="form-group">
+          <input
+            name="password"
+            type="password"
+            {...register("password")}
+            className={classNames(
+              classes.input,
+              classes.password,
+              `${errors.password ? "is-invalid" : ""}`
+            )}
+          />
+          <div className={classes.invalidFeedback}>
+            {errors.password?.message}
+          </div>
+        </div>
 
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <Input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  value={password}
-                  onChange={onChangePassword}
-                  validations={[required, vpassword]}
-                />
-              </div>
+        <div className="form-group">
+          <input
+            name="password_confirmation"
+            type="password"
+            {...register("password_confirmation")}
+            className={classNames(
+              classes.input,
+              classes.password,
+              `${errors.password_confirmation ? "is-invalid" : ""}`
+            )}
+          />
+          <div className={classes.invalidFeedback}>
+            {errors.password_confirmation?.message}
+          </div>
+        </div>
 
-              <div className="form-group">
-                <label htmlFor="password">Password Confirmation</label>
-                <Input
-                  type="password"
-                  className="form-control"
-                  name="passwordConfirmation"
-                  value={passwordConfirmation}
-                  onChange={onChangePasswordConfirmation}
-                  validations={[required, vpasswordconfirm]}
-                />
-              </div>
+        <div className="form-group form-check">
+          <input
+            name="acceptTerms"
+            type="checkbox"
+            {...register("acceptTerms")}
+            className={`form-check-input ${
+              errors.acceptTerms ? "is-invalid" : ""
+            }`}
+          />
+          <label htmlFor="acceptTerms" className="form-check-label">
+            I have read and agree to the Terms
+          </label>
+          <div className={classes.invalidFeedback}>
+            {errors.acceptTerms?.message}
+          </div>
+        </div>
 
-              <div className="form-group">
-                <button className="btn btn-primary btn-block">Sign Up</button>
-              </div>
-            </div>
-          )}
-
-          {message && (
-            <div className="form-group">
-              <div
-                className={
-                  successful ? "alert alert-success" : "alert alert-danger"
-                }
-                role="alert"
-              >
-                {message}
-              </div>
-            </div>
-          )}
-          <CheckButton style={{ display: "none" }} ref={checkBtn} />
-        </Form>
-      </div>
-    </div>
+        <div className="form-group">
+          <button
+            type="submit"
+            className={classNames(classes.input, classes.button)}
+          >
+            Register
+          </button>
+          <button
+            type="button"
+            onClick={reset}
+            className={classNames(classes.input, classes.button, classes.reset)}
+          >
+            Reset
+          </button>
+        </div>
+      </form>
+    </Grid>
   );
 };
 

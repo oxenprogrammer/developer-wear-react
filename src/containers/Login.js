@@ -20,7 +20,7 @@ const required = (value) => {
   }
 };
 
-const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
     justifyContent: "center",
@@ -58,7 +58,7 @@ const useStyles = makeStyles(() => ({
     width: "16rem",
     marginBottom: "2rem",
     border: "0.5px solid gray",
-    fontSize: "1.6rem",
+    fontSize: "1.2rem",
     textAlign: "center",
     background: "transparent",
   },
@@ -73,6 +73,15 @@ const useStyles = makeStyles(() => ({
     fontSize: "1rem",
     color: "#ffffff",
     backgroundColor: "#FF5617",
+    marginTop: "0.6rem",
+  },
+  reset: {
+    backgroundColor: "gray",
+    marginLeft: "0.6rem",
+  },
+  invalidFeedback: {
+    color: "red",
+    padding: "0.2rem 0",
   },
 }));
 
