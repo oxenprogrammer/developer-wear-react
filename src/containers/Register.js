@@ -54,9 +54,9 @@ const Register = () => {
     <Grid container className={classes.root}>
       <div className={classes.background}></div>
       <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-        <Typography className={classes.signIn}>Sign in</Typography>
+        <Typography className={classes.signIn}>Sign up</Typography>
         <Typography className={classes.tag}>
-          Hello there, sign in and find your favourite developer T-shirt.
+          Hello there, sign up and find your favourite developer T-shirt.
         </Typography>
         <div className="form-group">
           <input

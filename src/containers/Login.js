@@ -140,7 +140,7 @@ const Login = (props) => {
       <Form className={classes.form} onSubmit={handleLogin} ref={form}>
         <Typography className={classes.signIn}>Sign in</Typography>
         <Typography className={classes.tag}>
-          Hello there, sign in and find your favourite developer T-shirt.
+          Welcome back, sign in and find your favourite developer T-shirt.
         </Typography>
         <Input
           type="email"
