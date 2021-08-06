@@ -39,12 +39,13 @@ const Register = () => {
   const dispatch = useDispatch();
 
   const onSubmit = ({ username, password, password_confirmation, email }) => {
+    console.log(username, email, password, password_confirmation);
     dispatch(userRegister(username, email, password, password_confirmation))
-      .then((response) => {
-        console.log("successful", response);
+      .then(() => {
+        window.location = "/login";
       })
-      .catch((e) => {
-        console.log("registration failed", e.message);
+      .catch(() => {
+        console.log("registration failed");
       });
   };
 
