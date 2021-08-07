@@ -5,7 +5,7 @@ import { Grid, Typography } from "@material-ui/core";
 import { Notification } from "./Notification";
 import React from "react";
 import classNames from "classnames";
-import { useDispatch } from "react-redux";
+import { useDispatch } from "../react-redux-hooks";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useStyles } from "./Login";
