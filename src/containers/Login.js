@@ -67,6 +67,9 @@ export const useStyles = makeStyles(() => ({
     fontSize: "1.2rem",
     textAlign: "center",
     background: "transparent",
+    "&:focus": {
+      outline: "none",
+    },
   },
   password: {
     border: "0.5px solid #ED3170",
