@@ -1,6 +1,6 @@
 import { Card, Grid, Typography, makeStyles } from "@material-ui/core";
 import { addFavourite, getSingleShirt } from "../redux/actions/wear";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "../react-redux-hooks";
 
 import { Notification } from "./Notification";
 import React from "react";
@@ -98,7 +98,7 @@ const Shirt = (props) => {
   }
 
   if (getShirt.loading) {
-    return <div>loading . . .</div>;
+    return <div className="loading">loading . . .</div>;
   }
 
   if (getShirt.error !== "") {
