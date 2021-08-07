@@ -1,6 +1,6 @@
 import { Grid, Typography, makeStyles } from "@material-ui/core";
 import React, { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "../react-redux-hooks";
 
 import CheckButton from "react-validation/build/button";
 import Form from "react-validation/build/form";
