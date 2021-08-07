@@ -2,10 +2,12 @@ import * as Yup from "yup";
 
 import { Grid, Typography } from "@material-ui/core";
 
+import { Notification } from "./Notification";
 import React from "react";
 import classNames from "classnames";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { useStyles } from "./Login";
 import { register as userRegister } from "../redux/actions/auth";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -36,6 +38,12 @@ const Register = () => {
     resolver: yupResolver(validationSchema),
   });
 
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
+
   const dispatch = useDispatch();
 
   const onSubmit = ({ username, password, password_confirmation, email }) => {
@@ -43,9 +51,18 @@ const Register = () => {
     dispatch(userRegister(username, email, password, password_confirmation))
       .then(() => {
         window.location = "/login";
+        setNotify({
+          isOpen: true,
+          message: `Registration Successful`,
+          type: "success",
+        });
       })
       .catch(() => {
-        console.log("registration failed");
+        setNotify({
+          isOpen: true,
+          message: `Something Went Wrong, Try Again`,
+          type: "warning",
+        });
       });
   };
 
@@ -152,6 +169,7 @@ const Register = () => {
           </button>
         </div>
       </form>
+      <Notification notify={notify} setNotify={setNotify} />
     </Grid>
   );
 };

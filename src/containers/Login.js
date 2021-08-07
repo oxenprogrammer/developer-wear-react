@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CheckButton from "react-validation/build/button";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
+import { Notification } from "./Notification";
 import { Redirect } from "react-router-dom";
 import classNames from "classnames";
 import { login } from "../redux/actions/auth";
@@ -109,6 +110,12 @@ const Login = (props) => {
     setPassword(password);
   };
 
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
+
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -121,12 +128,27 @@ const Login = (props) => {
         .then(() => {
           props.history.push("/shirts");
           window.location.reload();
+          setNotify({
+            isOpen: true,
+            message: `Login Successful`,
+            type: "success",
+          });
         })
         .catch(() => {
           setLoading(false);
+          setNotify({
+            isOpen: true,
+            message: `Login Failed`,
+            type: "warning",
+          });
         });
     } else {
       setLoading(false);
+      setNotify({
+      isOpen: true,
+      message: `You have Form Input Errors`,
+      type: "warning",
+    });
     }
   };
 
@@ -176,6 +198,7 @@ const Login = (props) => {
         )}
         <CheckButton style={{ display: "none" }} ref={checkBtn} />
       </Form>
+      <Notification notify={notify} setNotify={setNotify} />
     </Grid>
   );
 };

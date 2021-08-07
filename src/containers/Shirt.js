@@ -2,10 +2,12 @@ import { Card, Grid, Typography, makeStyles } from "@material-ui/core";
 import { addFavourite, getSingleShirt } from "../redux/actions/wear";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Notification } from "./Notification";
 import React from "react";
 import { Redirect } from "react-router-dom";
 import _ from "lodash";
 import tee from "../assets/img/tee.png";
+import { useState } from "react";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -74,10 +76,21 @@ const Shirt = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
+
   const shirtData = getShirt.data[shirtId];
 
   const handleFavourite = () => {
     dispatch(addFavourite(shirtData.id));
+    setNotify({
+      isOpen: true,
+      message: `Successfully Added to Favourite`,
+      type: "success",
+    });
   };
 
   if (!currentUser) {
@@ -111,6 +124,7 @@ const Shirt = (props) => {
             Add to favourites
           </button>
         </Card>
+        <Notification notify={notify} setNotify={setNotify} />
       </Grid>
     );
   }
