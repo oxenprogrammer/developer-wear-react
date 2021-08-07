@@ -1,18 +1,30 @@
 /* eslint-disable no-unused-vars */
-import { Link, Route, Router, Switch } from "react-router-dom";
+import {
+  Grid,
+  IconButton,
+  Link,
+  ListItemIcon,
+  Menu,
+  MenuItem,
+  Typography,
+  makeStyles,
+  useMediaQuery,
+  useTheme,
+} from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { Route, Router, Switch, Link as mobileLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Favourites from "./containers/Favourites";
 import { Home } from "./components/Home";
 import Login from "./containers/Login";
+import MenuIcon from "@material-ui/icons/Menu";
 import Register from "./containers/Register";
 import Shirt from "./containers/Shirt";
 import Shirts from "./containers/Shirts";
 import { clearMessage } from "./redux/actions/mesage";
 import { history } from "./helpers/history";
 import { logout } from "./redux/actions/auth";
-import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -66,8 +78,15 @@ const useStyles = makeStyles(() => ({
     "@media(max-width: 480px)": {
       margin: "0 0.4rem",
       fontSize: "0.7rem",
+      color: '#000000',
     },
   },
+  menuItem: {
+    backgroundColor: "#FF5617",
+  },
+  menuButton: {
+    color: '#FF5617'
+  }
 }));
 
 const App = () => {
@@ -85,11 +104,137 @@ const App = () => {
     dispatch(logout());
   };
 
+  const [anchor, setAnchor] = React.useState(null);
+  const open = Boolean(anchor);
+  
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const handleMenu = (event) => {
+    setAnchor(event.currentTarget);
+  };
   return (
     <Router history={history}>
       <div className={classes.root}>
         <nav className={classes.navbar}>
-          <Link to={"/"} className={classes.navbarBrand}>
+          {isMobile ? (
+            <>
+              <Link to={"/"} className={classes.navbarBrand}>
+                Sudo Wear
+              </Link>
+              {currentUser ? (
+                <>
+                  <IconButton
+                    color="textPrimary"
+                    className={classes.menuButton}
+                    edge="start"
+                    aria-label="menu"
+                    onClick={handleMenu}
+                  >
+                    <MenuIcon className={classes.menuIcon} />
+                  </IconButton>
+                  <Menu
+                     className={classes.menu}
+                    id="menu-appbar"
+                    anchorEl={anchor}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    KeepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={open}
+                  >
+                    <MenuItem
+                      className={classes.menuItem}
+                      onClick={() => setAnchor(null)}
+                      component={mobileLink}
+                      to="/favourites"
+                    >
+                      <ListItemIcon></ListItemIcon>
+                      <Typography className={classes.navItem}>
+                        My Favourites
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem
+                    className={classes.menuItem}
+                      onClick={() => setAnchor(null)}
+                      component={mobileLink}
+                      to="/shirts"
+                    >
+                      <ListItemIcon></ListItemIcon>
+                      <Typography className={classes.navItem}>
+                        Shirts
+                      </Typography>
+                    </MenuItem>
+                     <MenuItem
+                     className={classes.menuItem}
+                      onClick={logOut}
+                      component={mobileLink}
+                      to="/login"
+                    >
+                      <ListItemIcon></ListItemIcon>
+                      <Typography className={classes.navItem}>
+                        Logout
+                      </Typography>
+                    </MenuItem>
+                  </Menu>
+                </>
+              ) : (
+                <>
+                  <IconButton
+                    color="textPrimary"
+                    className={classes.menuButton}
+                    edge="start"
+                    aria-label="menu"
+                    onClick={handleMenu}
+                  >
+                    <MenuIcon className={classes.menu} />
+                  </IconButton>
+                  <Menu
+                    className={classes.menu}
+                    id="menu-appbar"
+                    anchorEl={anchor}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    KeepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={open}
+                  >
+                    <MenuItem
+                      className={classes.menuItem}
+                      onClick={() => setAnchor(null)}
+                      component={mobileLink}
+                      to="/login"
+                    >
+                      <ListItemIcon></ListItemIcon>
+                      <Typography className={classes.navItem}>Login</Typography>
+                    </MenuItem>
+                    <MenuItem
+                      className={classes.menuItem}
+                      onClick={() => setAnchor(null)}
+                      component={mobileLink}
+                      to="/register"
+                    >
+                      <ListItemIcon></ListItemIcon>
+                      <Typography className={classes.navItem}>
+                        SignUp
+                      </Typography>
+                    </MenuItem>
+                  </Menu>
+                </>
+              )}
+            </>
+          ) : (
+            <>
+              <Link to={"/"} className={classes.navbarBrand}>
             Sudo Wear
           </Link>
 
@@ -114,6 +259,8 @@ const App = () => {
                 SignUp
               </Link>
             </div>
+          )}
+            </>
           )}
         </nav>
 
