@@ -78,15 +78,15 @@ const useStyles = makeStyles(() => ({
     "@media(max-width: 480px)": {
       margin: "0 0.4rem",
       fontSize: "0.7rem",
-      color: '#000000',
+      color: "#000000",
     },
   },
   menuItem: {
     backgroundColor: "#FF5617",
   },
   menuButton: {
-    color: '#FF5617'
-  }
+    color: "#FF5617",
+  },
 }));
 
 const App = () => {
@@ -106,7 +106,7 @@ const App = () => {
 
   const [anchor, setAnchor] = React.useState(null);
   const open = Boolean(anchor);
-  
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const handleMenu = (event) => {
@@ -133,7 +133,7 @@ const App = () => {
                     <MenuIcon className={classes.menuIcon} />
                   </IconButton>
                   <Menu
-                     className={classes.menu}
+                    className={classes.menu}
                     id="menu-appbar"
                     anchorEl={anchor}
                     anchorOrigin={{
@@ -159,7 +159,7 @@ const App = () => {
                       </Typography>
                     </MenuItem>
                     <MenuItem
-                    className={classes.menuItem}
+                      className={classes.menuItem}
                       onClick={() => setAnchor(null)}
                       component={mobileLink}
                       to="/shirts"
@@ -169,8 +169,8 @@ const App = () => {
                         Shirts
                       </Typography>
                     </MenuItem>
-                     <MenuItem
-                     className={classes.menuItem}
+                    <MenuItem
+                      className={classes.menuItem}
                       onClick={logOut}
                       component={mobileLink}
                       to="/login"
@@ -235,31 +235,35 @@ const App = () => {
           ) : (
             <>
               <Link to={"/"} className={classes.navbarBrand}>
-            Sudo Wear
-          </Link>
+                Sudo Wear
+              </Link>
 
-          {currentUser ? (
-            <div className={classes.navLink}>
-              <Link to={"/favourites"} className={classes.navItem}>
-                My Favourites
-              </Link>
-              <Link to={"/shirts"} className={classes.navItem}>
-                Shirts
-              </Link>
-              <Link to={"/login"} className={classes.navItem} onClick={logOut}>
-                LogOut
-              </Link>
-            </div>
-          ) : (
-            <div className={classes.navLink}>
-              <Link to={"/login"} className={classes.navItem}>
-                Login
-              </Link>
-              <Link to={"/register"} className={classes.navItem}>
-                SignUp
-              </Link>
-            </div>
-          )}
+              {currentUser ? (
+                <div className={classes.navLink}>
+                  <Link to={"/favourites"} className={classes.navItem}>
+                    My Favourites
+                  </Link>
+                  <Link to={"/shirts"} className={classes.navItem}>
+                    Shirts
+                  </Link>
+                  <Link
+                    to={"/login"}
+                    className={classes.navItem}
+                    onClick={logOut}
+                  >
+                    LogOut
+                  </Link>
+                </div>
+              ) : (
+                <div className={classes.navLink}>
+                  <Link to={"/login"} className={classes.navItem}>
+                    Login
+                  </Link>
+                  <Link to={"/register"} className={classes.navItem}>
+                    SignUp
+                  </Link>
+                </div>
+              )}
             </>
           )}
         </nav>

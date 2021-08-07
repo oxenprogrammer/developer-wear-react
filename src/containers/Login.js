@@ -43,6 +43,11 @@ export const useStyles = makeStyles(() => ({
     alignItems: "center",
     alignSelf: "center",
     alignContent: "center",
+    backgroundColor: "rgba(33, 33, 33, 0.1)",
+    borderRadius: "1.2rem",
+    "@media(max-width: 600px)": {
+      backgroundColor: "rgba(33, 33, 33, 0)",
+    },
   },
   signIn: {
     fontFamily: '"Roboto", sans-serif',
