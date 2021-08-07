@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { getAllShirts } from "../redux/actions/wear";
-import tee from '../assets/img/tee.png';
+import tee from "../assets/img/tee.png";
 
 const useStyles = makeStyles(() => ({
   root: {
     display: "grid",
     justifyContent: "center",
-    gridTemplateColumns: 'auto auto auto',
+    gridTemplateColumns: "auto auto auto",
     "@media(max-width: 768px)": {
-      gridTemplateColumns: 'auto auto',
+      gridTemplateColumns: "auto auto",
     },
     "@media(max-width: 480px)": {
       display: "block",
@@ -29,11 +29,11 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     padding: "1rem 1rem 0 1rem",
-    margin: '1rem',
+    margin: "1rem",
     alignItems: "center",
-    alignSelf: 'center',
-    alignContent: 'center',
-    textAlign: 'center',
+    alignSelf: "center",
+    alignContent: "center",
+    textAlign: "center",
     "@media(max-width: 480px)": {
       padding: "1rem",
       display: "inline-block",
@@ -42,27 +42,27 @@ const useStyles = makeStyles(() => ({
   cardImage: {
     width: "100%",
     "@media(max-width: 480px)": {
-      height: '100%',
+      height: "100%",
     },
   },
   cardName: {
-    color: '#FF5617',
-    fontSize: '1rem',
-    fontWeight: 'bolder',
-    textTransform: 'uppercase',
-    padding: '1rem',
+    color: "#FF5617",
+    fontSize: "1rem",
+    fontWeight: "bolder",
+    textTransform: "uppercase",
+    padding: "1rem",
   },
   cardLink: {
-    textDecoration: 'none',
-    width: '100%',
-    backgroundColor: '#ff5617',
-    padding: '1rem',
-    color: '#ffffff',
-    fontWeight: 'bold',
+    textDecoration: "none",
+    width: "100%",
+    backgroundColor: "#ff5617",
+    padding: "1rem",
+    color: "#ffffff",
+    fontWeight: "bold",
     "@media(max-width: 480px)": {
-      padding: '0.4rem',
-      backgroundColor: 'transparent',
-      color: '#000000',
+      padding: "0.4rem",
+      backgroundColor: "transparent",
+      color: "#000000",
     },
   },
 }));
@@ -97,7 +97,7 @@ const Shirts = () => {
 
   return (
     <Grid className={classes.root}>
-      {getShirts.data.map((element) => { 
+      {getShirts.data.map((element) => {
         if (element.image.url === null) {
           image = tee;
         } else {
@@ -105,13 +105,11 @@ const Shirts = () => {
         }
         return (
           <Card key={element.id} className={classes.card}>
-            <img
-              className={classes.cardImage}
-              src={image}
-              alt={element.name}
-            />
+            <img className={classes.cardImage} src={image} alt={element.name} />
             <div className={classes.cardName}>{element.name}</div>
-            <Link className={classes.cardLink} to={`/shirts/${element.id}`}>View Detail</Link>
+            <Link className={classes.cardLink} to={`/shirts/${element.id}`}>
+              View Detail
+            </Link>
           </Card>
         );
       })}
