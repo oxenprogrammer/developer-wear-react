@@ -2,7 +2,6 @@
 import {
   Grid,
   IconButton,
-  Link,
   ListItemIcon,
   Menu,
   MenuItem,
@@ -11,8 +10,8 @@ import {
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
+import { Link, Route, Router, Switch } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { Route, Router, Switch, Link as mobileLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Favourites from "./containers/Favourites";
@@ -25,6 +24,7 @@ import Shirts from "./containers/Shirts";
 import { clearMessage } from "./redux/actions/mesage";
 import { history } from "./helpers/history";
 import { logout } from "./redux/actions/auth";
+import mobileLink from "./helpers/mobileLink";
 
 const useStyles = makeStyles(() => ({
   root: {
