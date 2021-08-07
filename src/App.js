@@ -41,6 +41,9 @@ const useStyles = makeStyles(() => ({
     zIndex: "2",
     padding: "2rem 1rem",
     backgroundColor: "#212121",
+    "@media(max-width: 540px)": {
+      backgroundColor: "rgba(33, 33, 33, 0.1)",
+    },
   },
   navbarBrand: {
     display: "inherit",
