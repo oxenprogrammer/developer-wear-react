@@ -1,6 +1,7 @@
 import axios from "axios";
+require('dotenv').config()
 
-const API_URL = "http://localhost:3000/api/v1/";
+const API_URL=BASE_URL;
 
 const register = (username, email, password, password_confirmation) => {
   return axios.post(API_URL + "users", {

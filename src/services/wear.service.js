@@ -1,7 +1,9 @@
 import authHeader from "./auth-header";
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/v1/";
+require('dotenv').config()
+
+const API_URL=BASE_URL;
 const perPage = 9;
 
 const getAllShirts = (page) => {
