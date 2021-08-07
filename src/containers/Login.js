@@ -67,6 +67,11 @@ export const useStyles = makeStyles(() => ({
     border: "0.5px solid #ED3170",
     color: "#FF5617",
     fontSize: "2.4rem",
+    '&::placeholder': {
+      textOverflow: 'ellipsis !important',
+      transform:'scale(0.45)',
+      verticalAlign: 'middle',
+    }
   },
   button: {
     width: "8rem",
@@ -171,6 +176,7 @@ const Login = (props) => {
           value={email}
           onChange={onChangeEmail}
           validations={[required]}
+          placeholder="Email"
         />
         <Input
           type="password"
@@ -179,6 +185,7 @@ const Login = (props) => {
           value={password}
           onChange={onChangePassword}
           validations={[required]}
+          placeholder="Password"
         />
         <button
           className={classNames(classes.input, classes.button)}

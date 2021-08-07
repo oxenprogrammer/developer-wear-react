@@ -80,6 +80,7 @@ const Register = () => {
           <input
             name="username"
             type="text"
+            placeholder="User Name"
             {...register("username")}
             className={classNames(
               classes.input,
@@ -95,6 +96,7 @@ const Register = () => {
           <input
             name="email"
             type="text"
+            placeholder="Email"
             {...register("email")}
             className={classNames(
               classes.input,
@@ -108,6 +110,7 @@ const Register = () => {
           <input
             name="password"
             type="password"
+            placeholder="Password"
             {...register("password")}
             className={classNames(
               classes.input,
@@ -124,6 +127,7 @@ const Register = () => {
           <input
             name="password_confirmation"
             type="password"
+            placeholder="Confirm Password"
             {...register("password_confirmation")}
             className={classNames(
               classes.input,
