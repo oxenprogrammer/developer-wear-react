@@ -23,7 +23,7 @@ const initialStateShirt = {
   error: "",
 };
 
-export const getData = (state = initialState, action) => {
+export const getMyFavourites = (state = initialState, action) => {
   switch (action.type) {
     case FAVOURITE_LOADING:
       return { ...state, loading: true };

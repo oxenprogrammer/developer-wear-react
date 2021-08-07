@@ -67,11 +67,11 @@ export const useStyles = makeStyles(() => ({
     border: "0.5px solid #ED3170",
     color: "#FF5617",
     fontSize: "2.4rem",
-    '&::placeholder': {
-      textOverflow: 'ellipsis !important',
-      transform:'scale(0.45)',
-      verticalAlign: 'middle',
-    }
+    "&::placeholder": {
+      textOverflow: "ellipsis !important",
+      transform: "scale(0.45)",
+      verticalAlign: "middle",
+    },
   },
   button: {
     width: "8rem",
@@ -150,10 +150,10 @@ const Login = (props) => {
     } else {
       setLoading(false);
       setNotify({
-      isOpen: true,
-      message: `You have Form Input Errors`,
-      type: "warning",
-    });
+        isOpen: true,
+        message: `You have Form Input Errors`,
+        type: "warning",
+      });
     }
   };
 

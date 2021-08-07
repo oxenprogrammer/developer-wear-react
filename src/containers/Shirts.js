@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 import { getAllShirts } from "../redux/actions/wear";
 import tee from "../assets/img/tee.png";
 
-const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles(() => ({
   root: {
     display: "grid",
     justifyContent: "center",

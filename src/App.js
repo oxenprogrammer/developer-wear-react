@@ -3,6 +3,7 @@ import { Link, Route, Router, Switch } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import Favourites from "./containers/Favourites";
 import { Home } from "./components/Home";
 import Login from "./containers/Login";
 import Register from "./containers/Register";
@@ -94,6 +95,9 @@ const App = () => {
 
           {currentUser ? (
             <div className={classes.navLink}>
+              <Link to={"/favourites"} className={classes.navItem}>
+                My Favourites
+              </Link>
               <Link to={"/shirts"} className={classes.navItem}>
                 Shirts
               </Link>
@@ -120,6 +124,7 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/shirts" component={Shirts} />
+            <Route exact path="/favourites" component={Favourites} />
           </Switch>
         </div>
       </div>

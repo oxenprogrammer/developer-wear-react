@@ -1,4 +1,9 @@
-import { addFavourite, getAllShirts, getData, getSingleShirt } from "./wear";
+import {
+  addFavourite,
+  getAllShirts,
+  getMyFavourites,
+  getSingleShirt,
+} from "./wear";
 
 import auth from "./auth";
 import { combineReducers } from "redux";
@@ -8,7 +13,7 @@ export default combineReducers({
   addFavourite,
   getSingleShirt,
   getAllShirts,
-  getData,
+  getMyFavourites,
   auth,
   message,
 });
