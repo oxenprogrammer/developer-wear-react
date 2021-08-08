@@ -2,9 +2,9 @@ import { Button, Card, Grid, Paper, Typography } from "@material-ui/core";
 
 import { Footer } from "./Footer";
 import back from "../assets/img/back.jpg";
-import backgroundImage from "../assets/img/swag.png";
+import backgroundImage from "../assets/img/Optimized-swag.png";
 import bug from "../assets/img/bug.png";
-import girl from "../assets/img/naava.png";
+import girl from "../assets/img/Optimized-naava.png";
 import html from "../assets/img/html.png";
 import { makeStyles } from "@material-ui/core";
 import read from "../assets/img/read.png";
