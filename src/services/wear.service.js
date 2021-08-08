@@ -1,9 +1,9 @@
 import authHeader from "./auth-header";
 import axios from "axios";
 
-require('dotenv').config()
+require("dotenv").config();
 
-const API_URL='https://gentle-thicket-58693.herokuapp.com/api/v1/';
+const API_URL = "https://gentle-thicket-58693.herokuapp.com/api/v1/";
 const perPage = 9;
 
 const getAllShirts = (page) => {

@@ -6,7 +6,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import _ from "lodash";
 import { getMyFavourites } from "../redux/actions/wear";
-import noContent from '../assets/img/no-content.jpg';
+import noContent from "../assets/img/no-content.jpg";
 import tee from "../assets/img/tee.png";
 import { useStyles } from "./Shirts";
 
@@ -40,8 +40,12 @@ const Favourites = () => {
   if (_.isEmpty(getShirts.data)) {
     return (
       <Card className={classes.card}>
-         <div className={classes.cardName}>You Do Not  Have A FAVOURITE YET</div>
-        <img className={classes.noCardImage} src={noContent} alt={'No Content'} />
+        <div className={classes.cardName}>You Do Not Have A FAVOURITE YET</div>
+        <img
+          className={classes.noCardImage}
+          src={noContent}
+          alt={"No Content"}
+        />
         <Link className={classes.cardLink} to={`/shirts`}>
           Back to List of Shirts
         </Link>
