@@ -6,6 +6,8 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { getAllShirts } from "../redux/actions/wear";
 import tee from "../assets/img/tee.png";
+import noContent from "../assets/img/no-content.jpg";
+import _ from "lodash";
 
 export const useStyles = makeStyles(() => ({
   root: {
@@ -98,6 +100,19 @@ const Shirts = () => {
 
   if (getShirts.error !== "") {
     return <p>{getShirts.error}</p>;
+  }
+
+  if (_.isEmpty(getShirts.data)) {
+    return (
+      <Card className={classes.card}>
+        <div className={classes.cardName}>Not Shirts Yet</div>
+        <img
+          className={classes.noCardImage}
+          src={noContent}
+          alt={"No Content"}
+        />
+      </Card>
+    );
   }
 
   let image;
