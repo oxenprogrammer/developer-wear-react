@@ -45,6 +45,13 @@ export const useStyles = makeStyles(() => ({
       height: "100%",
     },
   },
+
+  noCardImage: {
+    width: "40%",
+    "@media(max-width: 480px)": {
+      height: "100%",
+    },
+  },
   cardName: {
     color: "#FF5617",
     fontSize: "1rem",
