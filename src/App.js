@@ -52,11 +52,11 @@ const useStyles = makeStyles(() => ({
     fontWeight: "bold",
     color: "#FF5617",
     textTransform: "capitalize",
-    fontSize: "200%",
+    fontSize: "300%",
     paddingLeft: "0.4rem",
     "@media(max-width: 480px)": {
       width: "120%",
-      fontSize: "140%",
+      fontSize: "180%",
     },
   },
   navLink: {
