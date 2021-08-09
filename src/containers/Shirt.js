@@ -85,7 +85,8 @@ const Shirt = (props) => {
   const shirtData = getShirt.data[shirtId];
 
   const handleFavourite = () => {
-    dispatch(addFavourite(shirtData.id));
+    const sent = dispatch(addFavourite(shirtData.id));
+    console('sent', sent);
     setNotify({
       isOpen: true,
       message: `Successfully Added to Favourite`,

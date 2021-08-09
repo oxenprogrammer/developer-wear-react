@@ -68,7 +68,7 @@ const Favourites = () => {
           <Card key={element.id} className={classes.card}>
             <img className={classes.cardImage} src={image} alt={element.name} />
             <div className={classes.cardName}>{element.shirt_name}</div>
-            <Link className={classes.cardLink} to={`/shirts/${element.id}`}>
+            <Link className={classes.cardLink} to={`/shirts/${element.shirt_id}`}>
               View Detail
             </Link>
           </Card>
