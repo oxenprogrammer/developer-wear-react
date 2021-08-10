@@ -8,7 +8,7 @@ import Input from "react-validation/build/input";
 import { Notification } from "./Notification";
 import { Redirect } from "react-router-dom";
 import classNames from "classnames";
-import loadingImage from '../assets/img/loading.gif';
+import loadingImage from "../assets/img/loading.gif";
 import { login } from "../redux/actions/auth";
 import loginBackground from "../assets/img/login.jpg";
 
@@ -200,9 +200,7 @@ const Login = (props) => {
           className={classNames(classes.input, classes.button)}
           disabled={loading}
         >
-          {loading && (
-            <img src={loadingImage} width="20%" alt={'loading...'} />
-          )}
+          {loading && <img src={loadingImage} width="20%" alt={"loading..."} />}
           <span>Sign in</span>
         </button>
         {message && (

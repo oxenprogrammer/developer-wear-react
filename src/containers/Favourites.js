@@ -57,7 +57,7 @@ const Favourites = () => {
 
   return (
     <Grid className={classes.root}>
-      {console.log('favourite', getShirts.data)}
+      {console.log("favourite", getShirts.data)}
       {getShirts.data.map((element) => {
         if (element.shirt_image.url === null) {
           image = tee;
@@ -68,7 +68,10 @@ const Favourites = () => {
           <Card key={element.id} className={classes.card}>
             <img className={classes.cardImage} src={image} alt={element.name} />
             <div className={classes.cardName}>{element.shirt_name}</div>
-            <Link className={classes.cardLink} to={`/shirts/${element.shirt_id}`}>
+            <Link
+              className={classes.cardLink}
+              to={`/shirts/${element.shirt_id}`}
+            >
               View Detail
             </Link>
           </Card>
