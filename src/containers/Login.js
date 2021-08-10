@@ -8,6 +8,7 @@ import Input from "react-validation/build/input";
 import { Notification } from "./Notification";
 import { Redirect } from "react-router-dom";
 import classNames from "classnames";
+import loadingImage from '../assets/img/loading.gif';
 import { login } from "../redux/actions/auth";
 import loginBackground from "../assets/img/login.jpg";
 
@@ -200,7 +201,7 @@ const Login = (props) => {
           disabled={loading}
         >
           {loading && (
-            <span className="spinner-border spinner-border-sm"></span>
+            <img src={loadingImage} width="20%" alt={'loading...'} />
           )}
           <span>Sign in</span>
         </button>
