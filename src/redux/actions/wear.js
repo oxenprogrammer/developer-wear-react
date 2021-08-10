@@ -89,7 +89,7 @@ export const addFavourite = (shirtId) => async (dispatch) => {
   try {
     const response = await WearService.addFavourite(shirtId);
     const result = response.data;
-   
+
     dispatch({
       type: ADD_LOADING,
     });
