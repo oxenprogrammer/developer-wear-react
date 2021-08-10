@@ -5,6 +5,7 @@ import { Grid, Typography } from "@material-ui/core";
 import { Notification } from "./Notification";
 import React from "react";
 import classNames from "classnames";
+import loadingImage from "../assets/img/loading.gif";
 import { useDispatch } from "../react-redux-hooks";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
@@ -44,10 +45,12 @@ const Register = () => {
     type: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   const onSubmit = ({ username, password, password_confirmation, email }) => {
-    console.log(username, email, password, password_confirmation);
+    setLoading(true);
     dispatch(userRegister(username, email, password, password_confirmation))
       .then(() => {
         window.location = "/login";
@@ -58,6 +61,7 @@ const Register = () => {
         });
       })
       .catch(() => {
+        setLoading(false);
         setNotify({
           isOpen: true,
           message: `Something Went Wrong, Try Again`,
@@ -161,7 +165,11 @@ const Register = () => {
           <button
             type="submit"
             className={classNames(classes.input, classes.button)}
+            disabled={loading}
           >
+            {loading && (
+              <img src={loadingImage} width="20%" alt={"loading..."} />
+            )}
             Register
           </button>
           <button
