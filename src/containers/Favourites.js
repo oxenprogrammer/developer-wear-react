@@ -57,7 +57,6 @@ const Favourites = () => {
 
   return (
     <Grid className={classes.root}>
-      {console.log("favourite", getShirts.data)}
       {getShirts.data.map((element) => {
         if (element.shirt_image.url === null) {
           image = tee;

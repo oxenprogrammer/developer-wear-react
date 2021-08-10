@@ -67,7 +67,6 @@ export const getSingleShirt = (shirtId) => async (dispatch) => {
   try {
     const response = await WearService.getSingleShirt(shirtId);
     const result = response.data;
-    console.log("result", result);
 
     dispatch({
       type: SHIRT_LOADING,
@@ -90,8 +89,7 @@ export const addFavourite = (shirtId) => async (dispatch) => {
   try {
     const response = await WearService.addFavourite(shirtId);
     const result = response.data;
-    console.log("result", result);
-
+   
     dispatch({
       type: ADD_LOADING,
     });
