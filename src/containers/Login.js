@@ -6,6 +6,7 @@ import CheckButton from "react-validation/build/button";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import { Notification } from "./Notification";
+import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import classNames from "classnames";
 import loadingImage from "../assets/img/loading.gif";
@@ -215,6 +216,10 @@ const Login = (props) => {
       <Notification notify={notify} setNotify={setNotify} />
     </Grid>
   );
+};
+
+Login.propTypes = {
+  history: PropTypes.object.isRequired,
 };
 
 export default Login;
