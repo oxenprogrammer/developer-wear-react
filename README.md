@@ -28,8 +28,6 @@ App uses react router to route to different components.
 Backend APIs are developed with Ruby on Rails. [Click here](https://github.com/oxenprogrammer/developer-wear/tree/feature/sudowear) to see backend project details.
 
 
-<!-- Live Link  -->
-
 ## Live Link
 
 [Click here](https://sudowear.netlify.app/) to see live version
