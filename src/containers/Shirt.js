@@ -8,6 +8,7 @@ import { Redirect } from "react-router-dom";
 import _ from "lodash";
 import tee from "../assets/img/tee.png";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -130,6 +131,10 @@ const Shirt = (props) => {
   }
 
   return <div>Nothing to Show</div>;
+};
+
+Shirt.propTypes = {
+  match: PropTypes.object.isRequired,
 };
 
 export default Shirt;
