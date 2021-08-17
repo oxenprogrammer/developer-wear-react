@@ -3,12 +3,12 @@ import { addFavourite, getSingleShirt } from "../redux/actions/wear";
 import { useDispatch, useSelector } from "../react-redux-hooks";
 
 import { Notification } from "./Notification";
+import PropTypes from "prop-types";
 import React from "react";
 import { Redirect } from "react-router-dom";
 import _ from "lodash";
 import tee from "../assets/img/tee.png";
 import { useState } from "react";
-import PropTypes from "prop-types";
 
 const useStyles = makeStyles(() => ({
   root: {
